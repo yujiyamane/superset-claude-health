@@ -108,7 +108,11 @@ def main():
 
     result = api_post("/api/v1/dashboard/", payload)
     db_id = result["id"]
-    print(f"  Dashboard created: id={db_id} with {len(chart_ids)} charts in layout")
+
+    for chart_id in chart_ids.values():
+        api_put(f"/api/v1/chart/{chart_id}", {"dashboards": [db_id]})
+
+    print(f"  Dashboard created: id={db_id}, {len(chart_ids)} charts linked")
     return db_id
 
 

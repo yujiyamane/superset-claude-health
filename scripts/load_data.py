@@ -50,12 +50,10 @@ def load_table(engine, table_name, csv_file):
 
     df = pd.read_csv(path)
 
-    date_cols = [c for c in df.columns if "time" in c or "date" in c.lower()]
-    for col in date_cols:
-        try:
+    datetime_cols = {"arrival_time", "triage_time", "treatment_start_time", "departure_time", "full_date"}
+    for col in df.columns:
+        if col in datetime_cols:
             df[col] = pd.to_datetime(df[col])
-        except Exception:
-            pass
 
     df.to_sql(table_name, engine, if_exists="append", index=False, method="multi", chunksize=5000)
     count = pd.read_sql(f"SELECT COUNT(*) as n FROM {table_name}", engine).iloc[0]["n"]

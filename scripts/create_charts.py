@@ -108,11 +108,10 @@ def main():
         fact_id,
         {
             "metrics": [{"expressionType": "SIMPLE", "column": {"column_name": "visit_id"}, "aggregate": "COUNT", "label": "Presentations"}],
-            "groupby": ["hospital_id"],
             "x_axis": "hospital_id",
             "color_scheme": "supersetColors",
             "rich_tooltip": True,
-            "show_legend": True,
+            "show_legend": False,
         },
     )
 
@@ -136,9 +135,7 @@ def main():
         fact_id,
         {
             "metrics": [{"expressionType": "SIMPLE", "column": {"column_name": "visit_id"}, "aggregate": "COUNT", "label": "Count"}],
-            "groupby": ["triage_id"],
             "x_axis": "triage_id",
-            "stack": True,
             "color_scheme": "supersetColors",
             "rich_tooltip": True,
         },
@@ -164,7 +161,6 @@ def main():
         fact_id,
         {
             "metrics": [{"expressionType": "SIMPLE", "column": {"column_name": "wait_time_minutes"}, "aggregate": "AVG", "label": "Avg Wait (min)"}],
-            "groupby": ["triage_id"],
             "x_axis": "triage_id",
             "color_scheme": "supersetColors",
             "rich_tooltip": True,
@@ -208,7 +204,6 @@ def main():
         fact_id,
         {
             "metrics": [{"expressionType": "SIMPLE", "column": {"column_name": "visit_id"}, "aggregate": "COUNT", "label": "Presentations"}],
-            "groupby": ["hospital_id"],
             "x_axis": "hospital_id",
             "color_scheme": "supersetColors",
             "rich_tooltip": True,

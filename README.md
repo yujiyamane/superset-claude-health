@@ -38,6 +38,12 @@ A complete Healthcare Emergency Department dashboard built **entirely through AI
 └─────────────────────┘   by triage category from ed_visits"
 ```
 
+### Claude MCP Interaction
+
+![MCP Interaction](screenshots/mcp_interaction.png)
+
+*Dashboard built entirely through natural language via Claude MCP*
+
 ## Dashboard Pages
 
 ### ED Performance Overview
@@ -48,6 +54,19 @@ Wait time distributions by triage category, hourly presentation heatmaps, breach
 
 ### Capacity & Flow
 Bed occupancy by ward type, patient flow Sankey diagrams, time-to-admission tracking.
+
+### Preview
+
+![Dashboard Overview](screenshots/dashboard_overview.png)
+
+### KPI Cards
+![KPI Cards](screenshots/kpi_cards.png)
+
+### Triage Analysis
+![Triage Chart](screenshots/triage_chart.png)
+
+### Hourly Heatmap
+![Heatmap](screenshots/heatmap.png)
 
 ## Row-Level Security
 
@@ -60,6 +79,17 @@ Three roles with automatic data filtering:
 | Ward Nurse | Their ward only | `ward_id = {{current_user.ward}}` |
 
 RLS rules are configured programmatically via Superset's REST API (8 endpoints), not through the UI.
+
+### RLS in Action
+
+![RLS Demo](screenshots/rls_demo.gif)
+
+*Admin sees all data → LHD Manager sees Sydney only → Ward Nurse sees their ward only*
+
+| Role | Screenshot |
+|------|-----------|
+| LHD Manager | ![LHD Manager View](screenshots/rls_lhd_manager.png) |
+| Ward Nurse | ![Ward Nurse View](screenshots/rls_ward_nurse.png) |
 
 ## Colour Palette
 

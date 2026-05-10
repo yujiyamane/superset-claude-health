@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: superset_postgres
+    environment:
+      POSTGRES_USER: superset
+      POSTGRES_PASSWORD: superset
+      POSTGRES_DB: superset_meta
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U superset"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  superset:
+    image: apache/superset:5.0.0
+    container_name: superset_app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SUPERSET_SECRET_KEY: "superset-claude-health-secret-key-change-in-prod"
+      SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://superset:superset@postgres:5432/superset_meta"
+      MCP_ENABLED: "true"
+      MCP_IMPERSONATE_USER: "admin"
+    volumes:
+      - ./superset/superset_config.py:/app/pythonpath/superset_config.py
+    ports:
+      - "8088:8088"
+      - "5008:5008"
+    command: >
+      bash -c "
+        superset db upgrade &&
+        superset fab create-admin --username admin --firstname Admin --lastname User --email admin@superset.local --password admin || true &&
+        superset init &&
+        superset run -h 0.0.0.0 -p 8088
+      "
+
+volumes:
+  postgres_data:

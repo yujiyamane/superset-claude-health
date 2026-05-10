@@ -6,13 +6,6 @@ SQLALCHEMY_DATABASE_URI = os.environ.get(
     "postgresql+psycopg2://superset:superset@postgres:5432/superset_meta"
 )
 
-EXTRA_DATABASES = {
-    "healthcare_db": {
-        "sqlalchemy_uri": "postgresql+psycopg2://superset:superset@postgres:5432/healthcare_db",
-        "expose_in_sqllab": True,
-    }
-}
-
 FEATURE_FLAGS = {
     "ENABLE_TEMPLATE_PROCESSING": True,
     "DASHBOARD_RBAC": True,

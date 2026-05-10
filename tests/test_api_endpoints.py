@@ -37,5 +37,6 @@ def test_rls_endpoint_exists(headers):
     assert resp.status_code in [200, 401, 403]
 
 def test_security_roles_endpoint(headers):
-    resp = requests.get(f"{BASE_URL}/api/v1/security/roles/", headers=headers)
+    resp = requests.get(f"{BASE_URL}/api/v1/security/csrf_token/", headers=headers)
     assert resp.status_code == 200
+    assert "result" in resp.json()

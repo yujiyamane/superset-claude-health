@@ -20,7 +20,8 @@ services:
       retries: 5
 
   superset:
-    image: apache/superset:5.0.0
+    build: .
+    image: superset-claude-health:5.0.0
     container_name: superset_app
     depends_on:
       postgres:

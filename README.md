@@ -38,12 +38,6 @@ A complete Healthcare Emergency Department dashboard built **entirely through AI
 └─────────────────────┘   by triage category from ed_visits"
 ```
 
-### Claude MCP Interaction
-
-![MCP Interaction](screenshots/mcp_interaction.png)
-
-*Dashboard built entirely through natural language via Claude MCP*
-
 ## Dashboard Pages
 
 ### ED Performance Overview
@@ -57,16 +51,9 @@ Bed occupancy by ward type, patient flow Sankey diagrams, time-to-admission trac
 
 ### Preview
 
-![Dashboard Overview](screenshots/dashboard_overview.png)
+![Dashboard Overview — Top](screenshots/overview_top.png)
 
-### KPI Cards
-![KPI Cards](screenshots/kpi_cards.png)
-
-### Triage Analysis
-![Triage Chart](screenshots/triage_chart.png)
-
-### Hourly Heatmap
-![Heatmap](screenshots/heatmap.png)
+![Dashboard Overview — Bottom](screenshots/overview_bottom.png)
 
 ## Row-Level Security
 
@@ -85,11 +72,6 @@ RLS rules are configured programmatically via Superset's REST API (8 endpoints),
 ![RLS Demo](screenshots/rls_demo.gif)
 
 *Admin sees all data → LHD Manager sees Sydney only → Ward Nurse sees their ward only*
-
-| Role | Screenshot |
-|------|-----------|
-| LHD Manager | ![LHD Manager View](screenshots/rls_lhd_manager.png) |
-| Ward Nurse | ![Ward Nurse View](screenshots/rls_ward_nurse.png) |
 
 ## Colour Palette
 
@@ -148,9 +130,9 @@ python scripts/load_data.py
 │   ├── rls_guide.md            # RLS implementation details
 │   └── before_after.md         # Manual vs AI-automated comparison
 └── screenshots/
-    ├── dashboard_overview.png
-    ├── rls_demo.gif
-    └── mcp_interaction.png
+    ├── overview_top.png
+    ├── overview_bottom.png
+    └── rls_demo.gif
 ```
 
 ## Key Metrics

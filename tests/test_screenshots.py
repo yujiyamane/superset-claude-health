@@ -5,14 +5,9 @@ from PIL import Image
 SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
 
 REQUIRED_FILES = [
-    "dashboard_overview.png",
-    "kpi_cards.png",
-    "triage_chart.png",
-    "heatmap.png",
-    "rls_lhd_manager.png",
-    "rls_ward_nurse.png",
+    "overview_top.png",
+    "overview_bottom.png",
     "rls_demo.gif",
-    "mcp_interaction.png",
 ]
 
 def test_all_screenshots_exist():

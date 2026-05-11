@@ -1,0 +1,17 @@
+<svg width="220" height="72" viewBox="0 0 220 72" xmlns="http://www.w3.org/2000/svg">
+  <!-- Leaf / flame icon -->
+  <g transform="translate(2,2)">
+    <!-- Right lobe -->
+    <path d="M34 2 C52 8 58 28 52 44 C46 58 40 66 34 70 C34 70 38 54 36 36 C34 22 30 10 34 2Z" fill="#8B0000"/>
+    <!-- Left lobe -->
+    <path d="M34 2 C16 8 10 28 16 44 C22 58 28 66 34 70 C34 70 30 54 32 36 C34 22 38 10 34 2Z" fill="#A50000"/>
+    <!-- Centre highlight split -->
+    <path d="M34 2 C34 20 33 46 34 70" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- AIxBI -->
+  <text x="76" y="44" font-size="38" font-weight="900" fill="#002664"
+        font-family="Arial Black,Arial,sans-serif" letter-spacing="-1">AIxBI</text>
+  <!-- GOVERNMENT -->
+  <text x="78" y="62" font-size="13" font-weight="700" fill="#002664"
+        font-family="Arial,sans-serif" letter-spacing="3.5">GOVERNMENT</text>
+</svg>

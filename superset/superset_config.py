@@ -26,6 +26,13 @@ FEATURE_FLAGS = {
     "DASHBOARD_CROSS_FILTERS": True,
 }
 
+HTML_SANITIZATION = False
+MARKDOWN_SANITIZE_HTML = False
+
+APP_NAME = "AIxBI Government"
+APP_ICON = "/static/assets/images/aixbi-logo.svg"
+APP_ICON_WIDTH = 220
+
 MCP_ENABLED = True
 MCP_PORT = 5008
 MCP_HOST = "0.0.0.0"

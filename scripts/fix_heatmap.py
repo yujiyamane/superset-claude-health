@@ -39,7 +39,7 @@ def main():
             "sqlExpression": "COUNT(*)",
             "label": "COUNT(*)",
         },
-        "linear_color_scheme": "reds",
+        "linear_color_scheme": "white_to_red",
         "legend_type": "continuous",
         "normalize_across": "heatmap",
         "sort_x_axis": "alpha_asc",

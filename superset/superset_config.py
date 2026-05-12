@@ -45,6 +45,13 @@ EXTRA_SEQUENTIAL_COLOR_SCHEMES = [
         "isDefault": False,
         "colors": ["#ffffff", "#ffe0e6", "#ffb8c1", "#e89aab", "#d17c95", "#ba5e7f", "#a34069", "#8c2253", "#630019"],
     },
+    {
+        "id": "white_to_red",
+        "description": "White to red heatmap (#FFFFFF -> #CC0000)",
+        "label": "White to Red",
+        "isDefault": False,
+        "colors": ["#ffffff", "#ffe5e5", "#ffcccc", "#ff9999", "#ff6666", "#ff3333", "#ee1111", "#cc0000"],
+    },
 ]
 
 SQLALCHEMY_DATABASE_URI = os.environ.get(

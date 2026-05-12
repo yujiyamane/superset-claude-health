@@ -190,7 +190,7 @@ def main():
             "x_axis": "day_of_week",
             "groupby": ["hour_ampm"],
             "metric": {"expressionType": "SQL", "sqlExpression": "COUNT(*)", "label": "COUNT(*)"},
-            "linear_color_scheme": "reds",
+            "linear_color_scheme": "white_to_red",
             "legend_type": "continuous",
             "normalize_across": "heatmap",
             "sort_x_axis": "alpha_asc",

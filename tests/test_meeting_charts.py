@@ -14,18 +14,32 @@ def headers():
     return {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
 
 
+def get_meeting_dashboard_id(headers):
+    resp = requests.get(f"{BASE_URL}/api/v1/dashboard/", headers=headers)
+    for d in resp.json().get("result", []):
+        if "Meeting" in d.get("dashboard_title", ""):
+            return d["id"]
+    return None
+
+
 def get_charts(headers):
-    resp = requests.get(
-        f"{BASE_URL}/api/v1/chart/",
-        headers=headers,
-        params={"q": "(filters:!((col:slice_name,opr:ct,value:'Meeting')))"}
-    )
+    dash_id = get_meeting_dashboard_id(headers)
+    if not dash_id:
+        return []
+    resp = requests.get(f"{BASE_URL}/api/v1/dashboard/{dash_id}/charts", headers=headers)
     return resp.json().get("result", [])
 
 
 def test_meeting_charts_count(headers):
     charts = get_charts(headers)
     assert len(charts) >= 13
+
+
+def test_no_meeting_prefix_in_names(headers):
+    charts = get_charts(headers)
+    names = [c["slice_name"] for c in charts]
+    assert not any(n.startswith("Meeting:") for n in names), \
+        f"Charts still have 'Meeting:' prefix: {[n for n in names if n.startswith('Meeting:')]}"
 
 
 def test_kpi_total_bookings_exists(headers):
@@ -68,7 +82,7 @@ def test_heatmap_exists(headers):
 
 def test_bar_charts_exist(headers):
     charts = get_charts(headers)
-    viz_types = [c.get("viz_type", "") for c in charts]
+    viz_types = [c.get("form_data", {}).get("viz_type", "") for c in charts]
     bar_count = sum(1 for v in viz_types if "bar" in v.lower())
     assert bar_count >= 3
 

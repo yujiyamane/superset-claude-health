@@ -9,7 +9,18 @@ EXTRA_CATEGORICAL_COLOR_SCHEMES = [
         "label": "NSW Health",
         "isDefault": False,
         "colors": ["#002664", "#146cfd", "#2e808e", "#8ce0ff", "#ffb8c1", "#630019", "#d1eeea"],
-    }
+    },
+    {
+        "id": "nsw_navy",
+        "description": "NSW Navy palette (extended 12-colour)",
+        "label": "NSW Navy",
+        "isDefault": False,
+        "colors": [
+            "#002664", "#146cfd", "#2e808e", "#8ce0ff",
+            "#ffb8c1", "#630019", "#d1eeea", "#e89aab",
+            "#d17c95", "#ba5e7f", "#a34069", "#8c2253",
+        ],
+    },
 ]
 SQLALCHEMY_DATABASE_URI = os.environ.get(
     "SQLALCHEMY_DATABASE_URI",

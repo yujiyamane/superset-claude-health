@@ -10,27 +10,25 @@ CSS = """
 .header-title {
     color: #002664 !important;
     font-weight: 700 !important;
-    font-size: 24px !important;
 }
 .superset-legacy-chart-big-number .header-line {
     color: #002664 !important;
-    font-size: 48px !important;
-    font-weight: 700 !important;
 }
 .superset-legacy-chart-big-number .subheader-line {
-    color: #002664 !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
+    color: #666 !important;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 .dashboard-component-chart-holder {
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 38, 100, 0.08);
-    border: 1px solid #d1eeea;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
 }
 .filter-bar {
     background-color: #f8fbff !important;
     border-right: 2px solid #002664 !important;
+}
+.dashboard-component-markdown {
+    padding: 0 !important;
 }
 """
 

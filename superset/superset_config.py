@@ -21,7 +21,32 @@ EXTRA_CATEGORICAL_COLOR_SCHEMES = [
             "#d17c95", "#ba5e7f", "#a34069", "#8c2253",
         ],
     },
+    {
+        "id": "pink_red_gradient",
+        "description": "Pink to Red gradient for meeting room charts",
+        "label": "Pink Red Gradient",
+        "isDefault": False,
+        "colors": ["#ffb8c1", "#e89aab", "#d17c95", "#ba5e7f", "#a34069", "#8c2253", "#75043d", "#630019"],
+    },
+    {
+        "id": "dark_red_palette",
+        "description": "Dark red to pink palette",
+        "label": "Dark Red Palette",
+        "isDefault": False,
+        "colors": ["#630019", "#75043d", "#8c2253", "#a34069", "#ba5e7f", "#d17c95", "#e89aab", "#ffb8c1"],
+    },
 ]
+
+EXTRA_SEQUENTIAL_COLOR_SCHEMES = [
+    {
+        "id": "white_pink_red",
+        "description": "White to pink to red for heatmaps",
+        "label": "White Pink Red",
+        "isDefault": False,
+        "colors": ["#ffffff", "#ffe0e6", "#ffb8c1", "#e89aab", "#d17c95", "#ba5e7f", "#a34069", "#8c2253", "#630019"],
+    },
+]
+
 SQLALCHEMY_DATABASE_URI = os.environ.get(
     "SQLALCHEMY_DATABASE_URI",
     "postgresql+psycopg2://superset:superset@postgres:5432/superset_meta"

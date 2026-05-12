@@ -156,6 +156,39 @@ python scripts/load_data.py
 | Version Control | Git + GitHub |
 | Testing | pytest |
 
+---
+
+## Dashboard 2: Meeting Room Utilisation
+
+Analysis of meeting room booking patterns across 8 floor levels and 50+ rooms.
+
+### Key Metrics
+- 50,000+ bookings analysed (2024–2026)
+- ~52 minute average booking duration
+- 13 rooms most active per day on average
+- Peak hours: 9–11 AM and 1–2 PM
+
+![Meeting Dashboard](screenshots/meeting_dashboard_overview.png)
+
+### Charts
+- 4 KPI cards (Total Bookings, Hours Booked, Avg Duration, Utilisation Rate)
+- 3 Donut charts (Floor Level, Time of Day, Day of Week distributions)
+- Heatmap (Peak booking times by hour × day)
+- 3 Bar charts (Floor level, Room name, Utilisation Rate comparisons)
+- Combo chart (Bookings vs Avg Duration by Day of Week)
+- Time series area (Daily booking volume 2024–2026)
+- 6 Native filters (Day, Hour, Organizer, Subject, Room, Floor Level)
+
+### Data Generation
+```bash
+python data/generate_meeting_data.py
+python scripts/load_meeting_data.py
+python scripts/create_meeting_charts.py
+python scripts/create_meeting_dashboard.py
+```
+
+---
+
 ## Related Projects
 
 | Case | Focus | Repo |

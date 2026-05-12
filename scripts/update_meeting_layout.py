@@ -157,7 +157,7 @@ def build_position_json(charts):
 
     row1 = []
     for i, ch in enumerate(kpis[:4]):
-        eid, blk = chart_block(f"kpi{i+1}", ch, 3, 10)
+        eid, blk = chart_block(f"kpi{i+1}", ch, 3, 16)
         positions[eid] = blk
         row1.append(eid)
     if row1:
@@ -166,11 +166,11 @@ def build_position_json(charts):
 
     row2 = []
     for i, ch in enumerate(donuts[:3]):
-        eid, blk = chart_block(f"donut{i+1}", ch, 3, 28)
+        eid, blk = chart_block(f"donut{i+1}", ch, 3, 32)
         positions[eid] = blk
         row2.append(eid)
     if heatmap:
-        eid, blk = chart_block("hmap", heatmap, 3, 28)
+        eid, blk = chart_block("hmap", heatmap, 3, 32)
         positions[eid] = blk
         row2.append(eid)
     if row2:
@@ -180,7 +180,7 @@ def build_position_json(charts):
     row3 = []
     for key, ch, w in [("floorbar", floor_bar, 4), ("combo", combo, 4), ("roombar", room_bar, 4)]:
         if ch:
-            eid, blk = chart_block(key, ch, w, 28)
+            eid, blk = chart_block(key, ch, w, 32)
             positions[eid] = blk
             row3.append(eid)
     if row3:
@@ -188,16 +188,10 @@ def build_position_json(charts):
         grid_rows.append("ROW-3")
 
     if timeseries:
-        eid, blk = chart_block("ts", timeseries, 12, 20)
+        eid, blk = chart_block("ts", timeseries, 12, 28)
         positions[eid] = blk
         positions["ROW-4"] = row_block("ROW-4", [eid])
         grid_rows.append("ROW-4")
-
-    if util_room:
-        eid, blk = chart_block("utilroom", util_room, 12, 28)
-        positions[eid] = blk
-        positions["ROW-5"] = row_block("ROW-5", [eid])
-        grid_rows.append("ROW-5")
 
     positions["MARKDOWN-footer"] = markdown_block("MARKDOWN-footer", FOOTER_HTML, 12, 6)
     positions["ROW-footer"] = row_block("ROW-footer", ["MARKDOWN-footer"])

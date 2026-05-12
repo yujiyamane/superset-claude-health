@@ -34,15 +34,14 @@ def main():
 
     fresh_params = {
         "viz_type": "heatmap",
-        "datasource": datasource,
+        "datasource": datasource or "8__table",
         "all_columns_x": "day_of_week",
         "all_columns_y": "hour_ampm",
         "metric": {
-            "aggregate": "COUNT",
-            "column": None,
-            "expressionType": "SIMPLE",
+            "expressionType": "SQL",
+            "sqlExpression": "COUNT(*)",
             "label": "COUNT(*)",
-            "optionName": "metric_count",
+            "hasCustomLabel": False,
         },
         "linear_color_scheme": "schemeReds",
         "normalize_across": "heatmap",

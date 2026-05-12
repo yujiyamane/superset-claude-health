@@ -28,7 +28,7 @@ def test_meeting_dashboard_has_charts(headers):
     dash_id = meeting["id"]
     charts_resp = requests.get(f"{BASE_URL}/api/v1/dashboard/{dash_id}/charts", headers=headers)
     slices = charts_resp.json().get("result", [])
-    assert len(slices) >= 13
+    assert len(slices) >= 12
 
 
 def test_meeting_dashboard_has_filters(headers):

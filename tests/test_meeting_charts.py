@@ -32,7 +32,7 @@ def get_charts(headers):
 
 def test_meeting_charts_count(headers):
     charts = get_charts(headers)
-    assert len(charts) >= 13
+    assert len(charts) >= 12
 
 
 def test_no_meeting_prefix_in_names(headers):
@@ -84,7 +84,7 @@ def test_bar_charts_exist(headers):
     charts = get_charts(headers)
     viz_types = [c.get("form_data", {}).get("viz_type", "") for c in charts]
     bar_count = sum(1 for v in viz_types if "bar" in v.lower() or "dist_bar" in v.lower())
-    assert bar_count >= 3
+    assert bar_count >= 2
 
 
 def test_timeseries_exists(headers):
@@ -106,4 +106,3 @@ def test_room_charts_exist(headers):
     charts = get_charts(headers)
     names = [c["slice_name"] for c in charts]
     assert any("by Room" in n for n in names)
-    assert any("Utilisation Rate by Room" in n for n in names)

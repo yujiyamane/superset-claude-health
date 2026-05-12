@@ -26,48 +26,36 @@ def main():
     chart_id = ch["id"]
 
     detail = api_get(f"/api/v1/chart/{chart_id}")
-    result = detail.get("result", {})
-    old_params = json.loads(result.get("params", "{}"))
-
-    datasource = old_params.get("datasource", "")
-    datasource_id = result.get("datasource_id") or old_params.get("datasource_id")
+    old_params = json.loads(detail.get("result", {}).get("params", "{}"))
+    datasource = old_params.get("datasource", "") or "8__table"
 
     fresh_params = {
-        "viz_type": "heatmap",
-        "datasource": datasource or "8__table",
-        "all_columns_x": "day_of_week",
-        "all_columns_y": "hour_ampm",
+        "viz_type": "heatmap_v2",
+        "datasource": datasource,
+        "x_axis": "day_of_week",
+        "groupby": ["hour_ampm"],
         "metric": {
             "expressionType": "SQL",
             "sqlExpression": "COUNT(*)",
             "label": "COUNT(*)",
-            "hasCustomLabel": False,
         },
-        "linear_color_scheme": "schemeReds",
+        "linear_color_scheme": "reds",
+        "legend_type": "continuous",
         "normalize_across": "heatmap",
-        "xscale_interval": 1,
-        "yscale_interval": 1,
-        "left_margin": "auto",
-        "bottom_margin": "auto",
-        "show_legend": True,
-        "show_values": False,
         "sort_x_axis": "alpha_asc",
         "sort_y_axis": "alpha_asc",
+        "show_legend": True,
+        "show_values": True,
+        "value_bounds": [None, None],
         "adhoc_filters": [],
         "row_limit": 10000,
     }
-
-    payload = {
+    api_put(f"/api/v1/chart/{chart_id}", {
         "slice_name": "Booking Heat Map (Peak Times)",
-        "viz_type": "heatmap",
+        "viz_type": "heatmap_v2",
         "params": json.dumps(fresh_params),
-    }
-    if datasource_id:
-        payload["datasource_id"] = datasource_id
-        payload["datasource_type"] = "table"
-
-    api_put(f"/api/v1/chart/{chart_id}", payload)
-    print(f"Heatmap rebuilt: id={chart_id}, datasource={datasource}")
+    })
+    print(f"Heatmap rebuilt: id={chart_id}, viz_type=heatmap_v2, x_axis=day_of_week, groupby=['hour_ampm']")
 
 
 if __name__ == "__main__":

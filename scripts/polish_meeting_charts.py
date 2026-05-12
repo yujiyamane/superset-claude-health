@@ -182,21 +182,31 @@ def main():
 
     ch = find(charts, "heat")
     if ch:
-        update_chart(ch["id"], "Booking Heat Map (Peak Times)", {
-            "all_columns_x": "day_of_week",
-            "all_columns_y": "hour_ampm",
+        detail = api_get(f"/api/v1/chart/{ch['id']}")
+        old_p = json.loads(detail.get("result", {}).get("params", "{}"))
+        heatmap_params = {
+            "viz_type": "heatmap_v2",
+            "datasource": old_p.get("datasource", "8__table") or "8__table",
+            "x_axis": "day_of_week",
+            "groupby": ["hour_ampm"],
             "metric": {"expressionType": "SQL", "sqlExpression": "COUNT(*)", "label": "COUNT(*)"},
-            "linear_color_scheme": "white_pink_red",
+            "linear_color_scheme": "reds",
+            "legend_type": "continuous",
             "normalize_across": "heatmap",
-            "xscale_interval": 1,
-            "yscale_interval": 1,
-            "left_margin": "auto",
-            "bottom_margin": "auto",
-            "show_legend": True,
-            "show_values": True,
             "sort_x_axis": "alpha_asc",
             "sort_y_axis": "alpha_asc",
-        }, set_viz_type="heatmap")
+            "show_legend": True,
+            "show_values": True,
+            "value_bounds": [None, None],
+            "adhoc_filters": [],
+            "row_limit": 10000,
+        }
+        api_put(f"/api/v1/chart/{ch['id']}", {
+            "slice_name": "Booking Heat Map (Peak Times)",
+            "viz_type": "heatmap_v2",
+            "params": json.dumps(heatmap_params),
+        })
+        print(f"  Booking Heat Map (Peak Times) (id={ch['id']})")
         updated += 1
 
     ch = find(charts, "floor", exclude=["donut", "pie"])

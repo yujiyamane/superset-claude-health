@@ -109,7 +109,6 @@ python scripts/load_data.py
 ├── superset/
 │   ├── superset_config.py      # Superset configuration + MCP + RLS
 │   ├── dashboards/             # Exported dashboard JSON (Git-versioned)
-│   └── datasets/               # Dataset definitions
 ├── data/
 │   ├── generate_data.py        # Synthetic ED data generator (same as Case 2)
 │   └── schema.sql              # PostgreSQL schema (star schema)
@@ -200,4 +199,4 @@ python scripts/create_meeting_dashboard.py
 
 ## Author
 
-**Yuji Yamane** — BI Developer @ NSW Health | AI-augmented analytics
+**Yuji Yamane** — AI-Augmented BI Solutions Lead | AI-augmented analytics

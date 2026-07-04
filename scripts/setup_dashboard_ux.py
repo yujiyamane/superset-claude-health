@@ -234,7 +234,7 @@ def main():
 
     new_meta = {
         **existing_meta,
-        "color_scheme": "nswHealth",
+        "color_scheme": "statewideHealth",
         "native_filter_configuration": filters,
         "cross_filters_enabled": True,
     }

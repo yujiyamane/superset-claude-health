@@ -4,7 +4,7 @@ SECRET_KEY = os.environ.get("SUPERSET_SECRET_KEY", "superset-claude-health-secre
 
 EXTRA_CATEGORICAL_COLOR_SCHEMES = [
     {
-        "id": "nswHealth",
+        "id": "statewideHealth",
         "description": "NSW Health colour palette",
         "label": "NSW Health",
         "isDefault": False,
